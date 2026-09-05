@@ -1,0 +1,975 @@
+*{box-sizing:border-box}:root{--accent:#c86e94}body{margin:0;background:#f4eef1;color:#57414b;font:13px Arial,"Noto Sans KR",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid #dfc7d1;background:#fff;border-radius:8px;padding:8px 10px;color:#765565}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:#fff;border-bottom:1px solid #eadce2}header small{letter-spacing:2.5px;color:#b47a91}h1{font:700 25px Georgia,serif;letter-spacing:3px;margin:3px 0}header p{margin:0;color:#9a7d89}.head-actions{display:flex;gap:7px}.primary{background:#c86e94!important;color:#fff!important}
+main{display:grid;grid-template-columns:340px 1fr;min-height:calc(100vh - 91px)}aside{background:#fff;border-right:1px solid #eadce2;padding:15px;overflow:auto;max-height:calc(100vh - 91px)}
+details{border-bottom:1px solid #f0e4e9;padding:8px 0 13px}summary,h3{font-size:11px;font-weight:bold;letter-spacing:1.8px;color:#ad6d87;cursor:pointer;margin:5px 0 10px}
+label{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;margin:8px 0;font-size:12px}input,select,textarea{width:100%;padding:7px;border:1px solid #e2cfd7;border-radius:7px;background:#fff;color:#57414b}
+input[type=color]{height:34px;padding:3px}.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.two label{grid-template-columns:1fr}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:6px}.row{display:flex;gap:6px;margin:7px 0}.row input{flex:1}.sub,.help{font-size:11px;color:#9e838e}
+.stage{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px;overflow:auto}.desktop{--a:#c86e94;--win-alpha:.94;--radius:12px;--desk-font:'Gowun Dodum',sans-serif;--desk-font-size:13px;--title-font:'Gowun Dodum',sans-serif;width:min(1120px,100%);aspect-ratio:16/9;position:relative;overflow:hidden;background:#f5dce8 center/cover no-repeat;border:1px solid #d9c2cc;box-shadow:0 18px 50px #4c334022;color:#4c3941;font-family:var(--desk-font);font-size:var(--desk-font-size)}
+.dim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}.desktop:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#fff5,transparent 50%,#0001)}
+.theme-pink{--a:#c86e94;background-color:#f5dce8}.theme-cream{--a:#b8906f;background-color:#f4eadc}.theme-angel{--a:#88b6c9;background-color:#eaf6fb}.theme-lavender{--a:#a78cbd;background-color:#eee6f5}.theme-cherry{--a:#b75c68;background-color:#f4dfe2}.theme-mint{--a:#75aa9d;background-color:#e2f2ed}.theme-modern{--a:#748daf;background-color:#e8edf4}.theme-retro{--a:#c8739a;background-color:#d7b7c5}.theme-dark{--a:#a27d9d;background-color:#18151a;color:#eee}.theme-cyber{--a:#69aaa0;background-color:#101918;color:#d9f4ef}
+.window{position:absolute;width:340px;min-height:185px;background:rgba(255,253,254,var(--win-alpha));border:1px solid #d8c2cb;border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 34px #2f202830;backdrop-filter:blur(7px)}.theme-dark .window,.theme-cyber .window{background:rgba(31,27,32,var(--win-alpha));border-color:#514650}
+.bar{font-family:var(--title-font);height:34px;padding:0 10px;display:flex;align-items:center;gap:7px;background:#fff7fa;border-bottom:1px solid #e5d3db;cursor:grab;user-select:none;font-size:11px;font-weight:bold}.theme-dark .bar,.theme-cyber .bar{background:#282329;border-color:#514650}.dot{width:9px;height:9px;border-radius:50%;background:var(--a)}.bar .title{flex:1}.close{border:0;background:transparent;padding:3px}
+.content{padding:14px;line-height:1.6;white-space:pre-wrap}.note .content{font-family:var(--desk-font)}.sticky{width:260px}.sticky .content{background:#fff2ad;min-height:180px;color:#594f33}
+.messages{display:flex;flex-direction:column;gap:7px}.bubble{max-width:80%;padding:7px 9px;background:#ece9ea;border-radius:12px}.bubble.me{align-self:flex-end;background:#f1d8e3}
+.musicgrid{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center}.cover{width:76px;height:76px;border-radius:8px;background:linear-gradient(135deg,var(--a),#fff);display:grid;place-items:center;font-size:26px}.progress{height:3px;background:#eadce2;margin-top:12px}.progress i{display:block;width:42%;height:100%;background:var(--a)}
+.photoarea{height:220px;background:#eee center/cover no-repeat;display:grid;place-items:center;color:#9b8e93}.browserbar{background:#f6f3f4;border-bottom:1px solid #e6dcdf;padding:7px}.foldergrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.mini:before{content:"▱";display:block;font-size:27px;color:var(--a)}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font-size:10px}.calendar-grid b{color:var(--a)}.todo-line{display:flex;gap:7px;border-bottom:1px solid #eee;padding:5px 0}.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--a),#fff);margin:auto}.profilebox{text-align:center}.terminal .content{background:#171719;color:#d8f2dd;font-family:Consolas,monospace;min-height:190px}.mailrow{padding:8px 0;border-bottom:1px solid #eee}
+.icon{position:absolute;width:78px;text-align:center;font-size:11px;cursor:grab;user-select:none}.iconpic{width:47px;height:39px;margin:auto auto 5px;background:var(--a);border:1px solid #fff8;border-radius:5px 5px 8px 8px;box-shadow:0 3px 8px #0002}.icon.file .iconpic{width:35px;height:45px;border-radius:3px;background:#fff;border-color:#ddd;position:relative}.icon.file .iconpic:after{content:"";position:absolute;left:7px;right:7px;top:12px;height:2px;background:var(--a);box-shadow:0 7px 0 var(--a),0 14px 0 var(--a)}.icon span{background:#ffffffb8;border-radius:3px;padding:2px 4px;text-shadow:0 1px 2px #fff}
+.deco{position:absolute;cursor:grab;user-select:none;color:var(--a);font-family:Georgia,serif;text-shadow:0 2px 7px #fff;font-size:34px}.deco.ribbon{font-size:14px;border:1px solid currentColor;padding:5px 16px;border-radius:20px;background:#ffffffaa}.deco.ribbon:before{content:"DEARLY ♡"}
+.taskbar{position:absolute;left:0;right:0;bottom:0;height:42px;display:flex;align-items:center;gap:9px;padding:0 9px;background:#fffdfdea;border-top:1px solid #dcc7d0;backdrop-filter:blur(8px)}.theme-dark .taskbar,.theme-cyber .taskbar{background:#242025e8;border-color:#514650}.start{background:var(--a);color:#fff;width:30px;height:30px;padding:0}.brand{font-size:10px;letter-spacing:2px}.taskhint{font-size:9px;color:#a38b95}.taskbar time{margin-left:auto;font-size:10px}.selected{outline:2px solid var(--a);outline-offset:2px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#3f3037;color:#fff;padding:9px 15px;border-radius:20px;opacity:0;pointer-events:none;transition:.2s}#toast.show{opacity:1}
+@media(max-width:880px){main{display:block}aside{max-height:none}.stage{align-items:flex-start;overflow-x:auto}.desktop{min-width:760px}header{align-items:flex-start;flex-direction:column;gap:10px}}
+/* Font application fix: preview text follows the selected desktop font. */
+.desktop,
+.desktop .content,
+.desktop .icon,
+.desktop .icon span,
+.desktop .taskbar,
+.desktop .taskbar button,
+.desktop .bubble,
+.desktop .browserbar,
+.desktop .foldergrid,
+.desktop .calendar-grid,
+.desktop .todo-line,
+.desktop .profilebox,
+.desktop .mailrow,
+.desktop .sticky .content {
+  font-family: var(--desk-font) !important;
+}
+.desktop .bar,
+.desktop .bar .title,
+.desktop .bar button {
+  font-family: var(--title-font) !important;
+}
+/* Terminal stays monospace intentionally. */
+.desktop .terminal .content { font-family: Consolas, "Courier New", monospace !important; }
+
+/* Selected font applies to ALL user-facing desktop/window text. */
+.desktop .window,
+.desktop .window .content,
+.desktop .window .content *,
+.desktop .messages,
+.desktop .messages *,
+.desktop .note,
+.desktop .note *,
+.desktop .sticky,
+.desktop .sticky *,
+.desktop .musicgrid,
+.desktop .musicgrid *,
+.desktop .photoarea,
+.desktop .browserbar,
+.desktop .foldergrid,
+.desktop .calendar-grid,
+.desktop .todo-line,
+.desktop .profilebox,
+.desktop .mailrow,
+.desktop .icon,
+.desktop .icon *,
+.desktop .taskbar,
+.desktop .taskbar * {
+  font-family: var(--desk-font) !important;
+}
+
+/* Window title uses the separately selected title font. */
+.desktop .window .bar,
+.desktop .window .bar *,
+.desktop .window .bar .title {
+  font-family: var(--title-font) !important;
+}
+
+/* Terminal is the only intentionally fixed font area. */
+.desktop .window.terminal .content,
+.desktop .window.terminal .content * {
+  font-family: Consolas, "Courier New", monospace !important;
+}
+
+/* Desktop icon/folder label alignment */
+.desktop .icon{
+  width:92px !important;
+  min-height:72px;
+  display:flex !important;
+  flex-direction:column;
+  align-items:center !important;
+  justify-content:flex-start;
+  text-align:center !important;
+  gap:5px;
+}
+
+.desktop .icon > span,
+.desktop .icon .label,
+.desktop .icon .name{
+  display:block;
+  width:92px !important;
+  max-width:92px !important;
+  margin:0 auto !important;
+  padding:0 3px;
+  box-sizing:border-box;
+  text-align:center !important;
+  line-height:1.25;
+  white-space:normal !important;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* Keep the folder/file picture itself centered independently of label length. */
+.desktop .icon > div:first-child,
+.desktop .icon .folder-icon,
+.desktop .icon .file-icon{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  flex:0 0 auto;
+}
+
+/* Custom image for the bottom DEARLY/start icon */
+#brandIcon{
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  background-size:cover !important;
+}
+#brandIcon.has-custom-image{
+  color:transparent !important;
+  text-shadow:none !important;
+}
+.taskbar-icon-setting{
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px solid rgba(190,120,150,.22);
+}
+.taskbar-icon-setting input[type="file"]{
+  display:block;
+  width:100%;
+  margin-top:7px;
+  font-size:11px;
+}
+#brandIconReset{
+  margin-top:7px;
+  width:100%;
+}
+
+
+/* =========================================================
+   EXTRA DESKTOP THEMES
+   ========================================================= */
+.theme-mono{
+  --a:#222;
+  background-color:#d8d8d8;
+  color:#111;
+  filter:grayscale(1);
+}
+.theme-mono .window{border-color:#777;box-shadow:5px 5px 0 #0003;background:rgba(250,250,250,var(--win-alpha))}
+.theme-mono .bar{background:#ececec;border-bottom-color:#888;color:#111}
+.theme-mono .taskbar{background:#efefef;border-top-color:#777}
+.theme-mono .iconpic{background:#444}
+
+.theme-newspaper{
+  --a:#111;
+  background-color:#f2f0e9;
+  color:#171717;
+  background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 1px,transparent 1px 4px);
+}
+.theme-newspaper .window{border:2px solid #111;border-radius:0!important;box-shadow:7px 7px 0 #111;background:rgba(248,247,242,var(--win-alpha))}
+.theme-newspaper .bar{background:#111;color:#fff;border:0;font-family:Georgia,serif!important}
+.theme-newspaper .dot{background:#fff}.theme-newspaper .close{color:#fff}
+.theme-newspaper .taskbar{border-top:2px solid #111;background:#f7f5ef}
+.theme-newspaper .start{border-radius:0;background:#111}
+
+.theme-silver{
+  --a:#72767d;
+  background:linear-gradient(135deg,#e9eaec,#bfc3c8 50%,#eef0f2);
+  color:#24262a;
+}
+.theme-silver .window{border:1px solid #8d9299;background:rgba(240,242,244,var(--win-alpha));box-shadow:0 10px 28px #3d424a44}
+.theme-silver .bar{background:linear-gradient(#fafafa,#c7cbd0);border-bottom-color:#9da1a7}
+.theme-silver .taskbar{background:linear-gradient(#f8f8f8,#c8ccd1);border-top-color:#8f949a}
+
+.theme-win98{
+  --a:#000080;
+  background-color:#008080;
+  color:#000;
+}
+.theme-win98:after{display:none}
+.theme-win98 .window{
+  border-radius:0!important;
+  border:2px solid;
+  border-color:#fff #404040 #404040 #fff;
+  background:#c0c0c0;
+  box-shadow:1px 1px 0 #000;
+  backdrop-filter:none;
+}
+.theme-win98 .bar{
+  height:28px;
+  margin:2px;
+  padding:0 4px;
+  border:0;
+  background:#000080;
+  color:#fff;
+  font-family:"MS Sans Serif","Tahoma",sans-serif!important;
+  font-weight:bold;
+}
+.theme-win98 .dot{display:none}
+.theme-win98 .close{
+  width:22px;height:20px;padding:0;border-radius:0;
+  border:2px solid;border-color:#fff #404040 #404040 #fff;
+  background:#c0c0c0;color:#000;font-weight:bold;
+}
+.theme-win98 .content{font-family:"MS Sans Serif","Tahoma",sans-serif!important}
+.theme-win98 .taskbar{
+  height:36px;background:#c0c0c0;border-top:2px solid #fff;
+  box-shadow:inset 0 1px #dfdfdf;
+}
+.theme-win98 .start{
+  width:auto;height:28px;padding:0 8px;border-radius:0;
+  border:2px solid;border-color:#fff #404040 #404040 #fff;
+  background:#c0c0c0;color:#000;font-weight:bold;
+}
+.theme-win98 .start:after{content:" Start";color:#000}
+.theme-win98 .iconpic{background:#e6d257;border-radius:0;border:1px solid #000;box-shadow:none}
+.theme-win98 .icon span{background:transparent;color:#fff;text-shadow:1px 1px #000}
+.theme-win98 .bubble{border-radius:0;background:#fff;border:1px solid #777}
+.theme-win98 .bubble.me{background:#ddd}
+
+.theme-winxp{
+  --a:#2867d8;
+  background:linear-gradient(#72b8f2 0 55%,#78b94b 55%);
+  color:#1f2b3c;
+}
+.theme-winxp .window{border:2px solid #2466d5;border-radius:7px 7px 2px 2px!important;background:#f7f7f4}
+.theme-winxp .bar{background:linear-gradient(#4f91f5,#2466d5);color:#fff;border:0}
+.theme-winxp .close{background:#e75d45;color:#fff;border:1px solid #fff;border-radius:3px}
+.theme-winxp .taskbar{background:linear-gradient(#3479df,#1958bc);color:#fff;border:0}
+.theme-winxp .start{background:#48a044;border-radius:12px;width:auto;padding:0 12px}
+.theme-winxp .start:after{content:" start";color:#fff}
+
+.theme-classicmac{
+  --a:#111;
+  background:#bdbdbd;
+  color:#111;
+}
+.theme-classicmac .window{border:2px solid #111;border-radius:0!important;background:#fff;box-shadow:3px 3px 0 #777}
+.theme-classicmac .bar{
+  background:repeating-linear-gradient(#fff 0 2px,#111 2px 3px);
+  color:#111;border-bottom:2px solid #111;
+}
+.theme-classicmac .bar .title{background:#fff;padding:2px 8px;flex:0 1 auto;margin:auto}
+.theme-classicmac .dot{display:none}.theme-classicmac .close{background:#fff;border:2px solid #111;border-radius:0}
+.theme-classicmac .taskbar{background:#fff;border-top:2px solid #111}
+.theme-classicmac .start{background:#fff;color:#111;border:2px solid #111;border-radius:0}
+
+.theme-terminalgreen{
+  --a:#71ff82;
+  background:#071108;
+  color:#8aff94;
+  background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(80,255,100,.045) 3px 4px);
+}
+.theme-terminalgreen .window{background:rgba(3,15,5,.94);border:1px solid #53dc64;box-shadow:0 0 18px #39ff5a22}
+.theme-terminalgreen .bar{background:#0d2410;color:#8aff94;border-bottom:1px solid #53dc64}
+.theme-terminalgreen .content,.theme-terminalgreen .window .content *{color:#8aff94}
+.theme-terminalgreen .taskbar{background:#081a0b;border-top:1px solid #53dc64}
+.theme-terminalgreen .icon span{background:#071108cc;color:#8aff94;text-shadow:none}
+
+.theme-y2k{
+  --a:#9a75bb;
+  background:radial-gradient(circle at 25% 20%,#fff 0 5%,transparent 25%),linear-gradient(135deg,#d9e8f2,#e8d9ef,#c6d6df);
+  color:#444354;
+}
+.theme-y2k .window{border:1px solid #fff;border-radius:18px!important;background:rgba(238,242,247,.82);box-shadow:0 12px 25px #77678b35,inset 0 0 0 1px #aeb8c6}
+.theme-y2k .bar{background:linear-gradient(90deg,#f8fbffcc,#d9cde7cc);border-bottom:1px solid #b8b2c5}
+.theme-y2k .taskbar{background:linear-gradient(90deg,#e5ebf0e8,#ded0e8e8);border-top:1px solid #fff}
+.theme-y2k .start{border-radius:50%;background:linear-gradient(135deg,#9e7dc0,#b9d6e3)}
+
+.theme-office{
+  --a:#8b745c;
+  background:#c9bea8;
+  color:#332e28;
+}
+.theme-office .window{border:1px solid #766d61;border-radius:2px!important;background:#e9e3d7;box-shadow:4px 5px 12px #4b403833}
+.theme-office .bar{background:#d2c8b7;border-bottom:1px solid #83796b;color:#332e28}
+.theme-office .taskbar{background:#d9d0c0;border-top:1px solid #81776a}
+.theme-office .iconpic{background:#a38b6e}
+
+/* Make selected taskbar image still work in every new theme. */
+#brandIcon.has-custom-image:after{content:""!important}
+.theme-win98 #brandIcon.has-custom-image,
+.theme-winxp #brandIcon.has-custom-image{font-size:0}
+
+/* Uploaded album/profile images */
+.desktop .cover.has-photo{
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  background-size:cover !important;
+  color:transparent !important;
+}
+.desktop .avatar.has-photo{
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  background-size:cover !important;
+}
+
+/* ===== Resizable + content-responsive windows ===== */
+.desktop .window{
+  box-sizing:border-box;
+  min-width:190px;
+  min-height:105px;
+  overflow:hidden;
+}
+
+/* body fills the resized window and reflows its contents */
+.desktop .window > .content{
+  box-sizing:border-box;
+  width:100%;
+  height:calc(100% - 31px);
+  min-height:0;
+  overflow:auto;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* text/content responds naturally to narrower or wider windows */
+.desktop .window .content p,
+.desktop .window .content div,
+.desktop .window .content span,
+.desktop .window .content li{
+  max-width:100%;
+  box-sizing:border-box;
+}
+.desktop .messages .bubble{
+  max-width:82%;
+  width:max-content;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.desktop .musicgrid{
+  grid-template-columns:minmax(52px,72px) minmax(0,1fr);
+  width:100%;
+}
+.desktop .musicgrid > div:last-child{min-width:0}
+.desktop .musicgrid b,
+.desktop .musicgrid small{
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.desktop .profilebox{max-width:100%}
+.desktop .photoarea img,
+.desktop .content img{
+  max-width:100%;
+  height:auto;
+}
+
+/* visible resize grip */
+.desktop .window .resize-handle{
+  position:absolute;
+  right:2px;
+  bottom:2px;
+  width:16px;
+  height:16px;
+  z-index:20;
+  cursor:nwse-resize;
+  touch-action:none;
+}
+.desktop .window .resize-handle:after{
+  content:"";
+  position:absolute;
+  right:2px;
+  bottom:2px;
+  width:9px;
+  height:9px;
+  border-right:1px solid currentColor;
+  border-bottom:1px solid currentColor;
+  opacity:.38;
+}
+
+/* Small windows: stack layouts so content doesn't get cut off */
+.desktop .window.compact-window .musicgrid{
+  grid-template-columns:48px minmax(0,1fr);
+  gap:8px;
+}
+.desktop .window.compact-window .cover{
+  width:48px!important;
+  height:48px!important;
+}
+.desktop .window.compact-window .profilebox{
+  padding:8px!important;
+}
+
+/* ===== Preserve line breaks in window content ===== */
+.desktop .window .content,
+.desktop .window .content p,
+.desktop .window .content span {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+.desktop .messages .bubble,
+.desktop .note .content,
+.desktop .sticky .content,
+.desktop .terminal .content {
+  white-space: pre-wrap !important;
+}
+.desktop .foldergrid,
+.desktop .calendar-grid,
+.desktop .todo-line,
+.desktop .mailrow {
+  white-space: normal;
+}
+
+/* ===== Cleaner desktop folder/file labels ===== */
+.desktop .icon{
+  width:104px !important;
+  min-height:82px;
+  display:flex !important;
+  flex-direction:column;
+  align-items:center !important;
+  justify-content:flex-start;
+  gap:6px;
+  text-align:center !important;
+}
+.desktop .icon .iconpic{
+  margin:0 auto 1px !important;
+  flex:0 0 auto;
+}
+.desktop .icon > span{
+  display:-webkit-box !important;
+  width:100% !important;
+  max-width:104px !important;
+  min-height:30px;
+  margin:0 auto !important;
+  padding:3px 5px !important;
+  text-align:center !important;
+  line-height:1.25 !important;
+  white-space:normal !important;
+  overflow-wrap:anywhere !important;
+  word-break:break-word !important;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  border-radius:4px;
+}
+.desktop .icon.selected > span{
+  background:rgba(255,255,255,.82);
+}
+.theme-dark .icon.selected > span,
+.theme-cyber .icon.selected > span,
+.theme-terminalgreen .icon.selected > span{
+  background:rgba(20,20,20,.72);
+}
+
+/* Windows 98 labels stay readable while retaining classic styling */
+.theme-win98 .icon > span{
+  width:104px !important;
+  max-width:104px !important;
+  padding:2px 4px !important;
+  text-align:center !important;
+}
+
+/* ===== Messenger direction ===== */
+.desktop.msg-left .messages{align-items:flex-start}
+.desktop.msg-left .messages .bubble,
+.desktop.msg-left .messages .bubble.me{align-self:flex-start!important;margin-left:0!important;margin-right:auto!important}
+.desktop.msg-right .messages{align-items:flex-end}
+.desktop.msg-right .messages .bubble,
+.desktop.msg-right .messages .bubble.me{align-self:flex-end!important;margin-left:auto!important;margin-right:0!important}
+.desktop.msg-alternating .messages .bubble{align-self:flex-start}
+.desktop.msg-alternating .messages .bubble.me{align-self:flex-end}
+
+/* ===== Theme system: every theme changes the whole desktop ===== */
+.desktop{
+ --surface:#fff9fc;--surface2:#f7e8ef;--panel:#fff;--text:#4c3941;
+ --muted:#8d737e;--line:#dfbdca;--bar1:#fff8fb;--bar2:#f3dce6;
+ --task1:#fff7fa;--task2:#eed6e1;--bubble:#fff;--bubbleMe:#f4d7e4;
+ --shadow:rgba(84,47,64,.18);--icon:#d78aaa;
+ color:var(--text);
+}
+.desktop .window{background:color-mix(in srgb,var(--surface) calc(var(--win-alpha)*100%),transparent);border-color:var(--line);box-shadow:0 12px 30px var(--shadow)}
+.desktop .bar{background:linear-gradient(180deg,var(--bar1),var(--bar2));color:var(--text);border-bottom-color:var(--line)}
+.desktop .content,.desktop .content *{color:var(--text)}
+.desktop .taskbar{background:linear-gradient(180deg,var(--task1),var(--task2));border-top-color:var(--line);color:var(--text)}
+.desktop .bubble{background:var(--bubble);border:1px solid var(--line)}
+.desktop .bubble.me{background:var(--bubbleMe)}
+.desktop .browserbar,.desktop .mailrow,.desktop .todo-line{border-color:var(--line);background:var(--surface2)}
+.desktop .progress{background:var(--surface2)} .desktop .progress i{background:var(--a)}
+.desktop .iconpic{background:var(--icon)}
+.desktop .sticky{background:var(--surface2)}
+.desktop .foldergrid>*,.desktop .calendar-grid>*{border-color:var(--line)}
+
+/* Pink: glossy diary desktop */
+.theme-pink{--a:#c96f98;--surface:#fff9fc;--surface2:#f9e5ee;--text:#513943;--muted:#987887;--line:#e7b9cd;--bar1:#fffafd;--bar2:#f4d8e5;--task1:#fff7fb;--task2:#eccfdd;--bubble:#fffafd;--bubbleMe:#f4d3e2;--shadow:#9d5e7a2e;--icon:#d985aa;background:radial-gradient(circle at 75% 12%,#fff 0 2%,transparent 18%),linear-gradient(135deg,#f8dbe7,#f4cbdc 55%,#fbe8ef)}
+.theme-pink .window{box-shadow:0 14px 35px #9d5e7a2e,inset 0 1px #fff}
+
+/* Cream: warm stationery */
+.theme-cream{--a:#a88359;--surface:#fffaf0;--surface2:#f3ead7;--text:#514538;--muted:#8e806c;--line:#d9c7a8;--bar1:#fffdf6;--bar2:#eee2c9;--task1:#f9f4e9;--task2:#e7dbc3;--bubble:#fffdf7;--bubbleMe:#eee1c7;--shadow:#6e5b4029;--icon:#bd9a6d;background:#e9dfca;background-image:linear-gradient(#ffffff30 1px,transparent 1px),linear-gradient(90deg,#ffffff25 1px,transparent 1px);background-size:24px 24px}
+.theme-cream .window{border-radius:8px!important}
+
+/* Angel blue: airy glass */
+.theme-angel{--a:#70a9cf;--surface:#f7fcff;--surface2:#dfeff8;--text:#344b5d;--muted:#6f8797;--line:#b9d8e9;--bar1:#fbfeff;--bar2:#dbeef8;--task1:#eff9fe;--task2:#cee5f2;--bubble:#fbfeff;--bubbleMe:#dceef8;--shadow:#4d83a12c;--icon:#80b6d4;background:linear-gradient(155deg,#d9effb,#edf9ff 46%,#cfe8f6)}
+.theme-angel .window{backdrop-filter:blur(12px);border-color:#ffffffaa}
+
+/* Lavender: soft editorial */
+.theme-lavender{--a:#9275b8;--surface:#fbf9ff;--surface2:#e9e0f3;--text:#493e58;--muted:#81748f;--line:#cfbee0;--bar1:#fdfbff;--bar2:#e5d8f0;--task1:#f8f3fc;--task2:#ded0eb;--bubble:#fdfbff;--bubbleMe:#e6d9f1;--shadow:#72568d2b;--icon:#a58ac3;background:linear-gradient(135deg,#e8dcf1,#d8c9e7 52%,#f2eafa)}
+.theme-lavender .window{border-radius:16px!important}
+
+/* Cherry: lacquer red */
+.theme-cherry{--a:#9d2942;--surface:#fff8f8;--surface2:#f3d7dc;--text:#4c252c;--muted:#8b6269;--line:#d8a3ad;--bar1:#fff9fa;--bar2:#ecc8d0;--task1:#f9e9ec;--task2:#dcaeba;--bubble:#fffafa;--bubbleMe:#efccd3;--shadow:#7b1f322f;--icon:#b94a62;background:linear-gradient(135deg,#781f34,#b8475f 48%,#6e182d)}
+.theme-cherry .window{box-shadow:0 15px 32px #4b0d1d40}
+
+/* Mint: translucent glass */
+.theme-mint{--a:#58a995;--surface:#f7fffc;--surface2:#d9f0e9;--text:#314c45;--muted:#69877e;--line:#acd8cc;--bar1:#fbfffd;--bar2:#d5ece6;--task1:#effbf7;--task2:#cce8df;--bubble:#fbfffd;--bubbleMe:#d5ede6;--shadow:#397f6c26;--icon:#70b7a5;background:linear-gradient(145deg,#cdeee4,#e9fbf5 50%,#bfe2d8)}
+.theme-mint .window{backdrop-filter:blur(14px);border-color:#ffffffa8}
+
+/* Modern / Dearly 11 */
+.theme-modern{--a:#5278b8;--surface:#f9fbff;--surface2:#e5ebf5;--text:#29384f;--muted:#6f7c90;--line:#cad4e3;--bar1:#ffffffdd;--bar2:#edf2f9cc;--task1:#f9fbffdd;--task2:#e2e8f1dd;--bubble:#fff;--bubbleMe:#e1e9f6;--shadow:#2e4b7628;--icon:#698bc3;background:radial-gradient(circle at 20% 20%,#d8e5ff,transparent 36%),radial-gradient(circle at 82% 72%,#e8d9ff,transparent 38%),#dbe5f4}
+.theme-modern .window{border-radius:14px!important;backdrop-filter:blur(18px);border-color:#ffffffa0}
+.theme-modern .taskbar{margin:0 12%;bottom:8px;border:1px solid #ffffffa0;border-radius:12px}
+
+/* Retro Dearly: warm CRT-ish */
+.theme-retro{--a:#b16d48;--surface:#f4e6cc;--surface2:#ddc9a5;--text:#4a3828;--muted:#806b55;--line:#9f8669;--bar1:#ead9ba;--bar2:#cbb18b;--task1:#ddc9a8;--task2:#bda17d;--bubble:#f8edd8;--bubbleMe:#dcc39e;--shadow:#4d382f45;--icon:#b07851;background:#6e6b55;background-image:repeating-linear-gradient(0deg,#00000008 0 2px,transparent 2px 4px)}
+.theme-retro .window{border-radius:2px!important;box-shadow:5px 6px 0 #3f382f55}
+
+/* Midnight */
+.theme-dark{--a:#9aa8d8;--surface:#171923;--surface2:#222635;--text:#eef0f8;--muted:#a4a9bb;--line:#3c4154;--bar1:#252938;--bar2:#191c27;--task1:#1d202c;--task2:#11131b;--bubble:#252936;--bubbleMe:#353b52;--shadow:#00000070;--icon:#6f789e;background:radial-gradient(circle at 70% 15%,#2d3350,transparent 32%),linear-gradient(#12141d,#090b11)}
+.theme-dark .window{box-shadow:0 18px 42px #0008}
+
+/* Cyber */
+.theme-cyber{--a:#45e7d2;--surface:#0b1018;--surface2:#101c25;--text:#d9fff9;--muted:#7bc4bc;--line:#1c756f;--bar1:#10212a;--bar2:#071015;--task1:#0d171e;--task2:#05090d;--bubble:#0d1820;--bubbleMe:#10302f;--shadow:#00d9c62e;--icon:#1da99d;background:#05090e;background-image:linear-gradient(#1dd7c80d 1px,transparent 1px),linear-gradient(90deg,#1dd7c80d 1px,transparent 1px);background-size:28px 28px}
+.theme-cyber .window{border-color:#1c756f;box-shadow:0 0 24px #00d9c622}
+.theme-cyber .bar{letter-spacing:.08em}
+
+/* Theme-specific legacy styles should also use matching inner surfaces */
+.theme-win98 .browserbar,.theme-win98 .mailrow,.theme-win98 .todo-line,.theme-win98 .sticky{background:#c0c0c0!important;border-color:#808080!important}
+.theme-winxp .browserbar,.theme-winxp .mailrow,.theme-winxp .todo-line{background:#eef4ff!important;border-color:#8bb4ef!important}
+.theme-classicmac .browserbar,.theme-classicmac .mailrow,.theme-classicmac .todo-line{background:#fff!important;border-color:#111!important}
+.theme-newspaper .browserbar,.theme-newspaper .mailrow,.theme-newspaper .todo-line{background:#f7f5ef!important;border-color:#111!important}
+.theme-terminalgreen .browserbar,.theme-terminalgreen .mailrow,.theme-terminalgreen .todo-line,.theme-terminalgreen .sticky{background:#08170a!important;border-color:#53dc64!important}
+
+/* =========================================================
+   THEME FIX 02 — legacy themes must recolor the WHOLE UI
+   ========================================================= */
+
+/* BLACK & WHITE PAPER */
+.desktop.theme-newspaper{
+  --a:#111;--surface:#f8f6ef;--surface2:#ece9df;--text:#171717;
+  --muted:#5d5b55;--line:#171717;--bar1:#171717;--bar2:#171717;
+  --task1:#f8f6ef;--task2:#e9e5da;--bubble:#fffef9;--bubbleMe:#e4e0d5;
+  --shadow:rgba(0,0,0,.22);--icon:#222;
+  background:#f2f0e9 !important;
+  background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 1px,transparent 1px 4px)!important;
+  color:#171717!important;
+  filter:none!important;
+}
+.theme-newspaper .window{background:#f8f6ef!important;border:2px solid #171717!important;border-radius:0!important;box-shadow:6px 6px 0 #171717!important;backdrop-filter:none!important}
+.theme-newspaper .bar{background:#171717!important;color:#fff!important;border:0!important}
+.theme-newspaper .bar *{color:#fff!important}
+.theme-newspaper .content,.theme-newspaper .content *{color:#171717!important}
+.theme-newspaper .taskbar{background:#f8f6ef!important;border-top:2px solid #171717!important;color:#171717!important;backdrop-filter:none!important}
+.theme-newspaper .iconpic{background:#222!important;border:1px solid #111!important;box-shadow:none!important}
+.theme-newspaper .icon.file .iconpic{background:#faf9f4!important}
+.theme-newspaper .icon span{background:#f8f6ef!important;color:#171717!important;text-shadow:none!important}
+.theme-newspaper .bubble{background:#fffef9!important;border:1px solid #171717!important;border-radius:0!important}
+.theme-newspaper .bubble.me{background:#ddd9ce!important}
+.theme-newspaper .cover,.theme-newspaper .avatar{filter:grayscale(1)!important;background:linear-gradient(135deg,#222,#ddd)!important}
+.theme-newspaper .progress,.theme-newspaper .browserbar,.theme-newspaper .mailrow,.theme-newspaper .todo-line{border-color:#171717!important}
+.theme-newspaper .progress{background:#d5d2c8!important}.theme-newspaper .progress i{background:#171717!important}
+
+/* SILVER DESKTOP */
+.desktop.theme-silver{
+  --a:#72767d;--surface:#eef0f2;--surface2:#d9dde1;--text:#25282d;
+  --muted:#6f747b;--line:#91969d;--bar1:#fbfcfd;--bar2:#c8cdd2;
+  --task1:#f8f9fa;--task2:#c7ccd1;--bubble:#f8f9fa;--bubbleMe:#d5d9de;
+  --shadow:rgba(45,50,58,.28);--icon:#92979e;
+  background:linear-gradient(135deg,#eceef0,#bfc4c9 52%,#f0f2f4)!important;
+  color:#25282d!important;
+}
+.theme-silver .window{background:rgba(239,241,243,var(--win-alpha))!important;border:1px solid #858b92!important;box-shadow:0 13px 30px #343a4245,inset 0 1px #fff!important}
+.theme-silver .bar{background:linear-gradient(#fff,#c7ccd1)!important;border-bottom:1px solid #8e949b!important;color:#25282d!important}
+.theme-silver .taskbar{background:linear-gradient(#fafafa,#c4c9ce)!important;border-top:1px solid #858b92!important;color:#25282d!important}
+.theme-silver .iconpic{background:linear-gradient(#b7bcc2,#777d84)!important;border-color:#f8f8f8!important}
+.theme-silver .icon.file .iconpic{background:linear-gradient(#fff,#e5e7e9)!important}
+.theme-silver .icon span{color:#25282d!important;background:#f5f6f7cc!important;text-shadow:none!important}
+.theme-silver .bubble{background:#f7f8f9!important;border:1px solid #a7acb2!important}.theme-silver .bubble.me{background:#d6dade!important}
+.theme-silver .cover,.theme-silver .avatar{background:linear-gradient(135deg,#555b62,#e8eaec)!important}
+
+/* WINDOWS 98 */
+.desktop.theme-win98{
+  --a:#000080;--surface:#c0c0c0;--surface2:#dfdfdf;--text:#000;
+  --muted:#444;--line:#808080;--bar1:#000080;--bar2:#000080;
+  --task1:#c0c0c0;--task2:#c0c0c0;--bubble:#fff;--bubbleMe:#dfdfdf;
+  --shadow:rgba(0,0,0,.25);--icon:#e5cf45;
+  background:#008080!important;background-image:none!important;color:#000!important;
+  font-family:Tahoma,"MS Sans Serif",sans-serif!important;
+}
+.theme-win98 .window{background:#c0c0c0!important;border:2px solid!important;border-color:#fff #404040 #404040 #fff!important;border-radius:0!important;box-shadow:1px 1px 0 #000!important;backdrop-filter:none!important}
+.theme-win98 .bar{height:24px!important;margin:2px!important;background:#000080!important;color:#fff!important;border:0!important;border-radius:0!important}
+.theme-win98 .bar *{color:#fff!important}.theme-win98 .bar .close{color:#000!important}
+.theme-win98 .content,.theme-win98 .content *{color:#000!important}
+.theme-win98 .taskbar{height:36px!important;background:#c0c0c0!important;border-top:2px solid #fff!important;color:#000!important;backdrop-filter:none!important}
+.theme-win98 .start{background:#c0c0c0!important;color:#000!important;border:2px solid!important;border-color:#fff #404040 #404040 #fff!important;border-radius:0!important}
+.theme-win98 .iconpic{background:#e5cf45!important;border:1px solid #000!important;border-radius:0!important;box-shadow:none!important}
+.theme-win98 .icon.file .iconpic{background:#fff!important;border:1px solid #808080!important}
+.theme-win98 .icon.file .iconpic:after{background:#000080!important;box-shadow:0 7px 0 #000080,0 14px 0 #000080!important}
+.theme-win98 .icon span{background:#008080!important;color:#fff!important;text-shadow:1px 1px #000!important;border-radius:0!important}
+.theme-win98 .bubble{background:#fff!important;border:1px solid #808080!important;border-radius:0!important}.theme-win98 .bubble.me{background:#dfdfdf!important}
+.theme-win98 .cover,.theme-win98 .avatar{background:#fff!important;border:2px inset #dfdfdf!important;border-radius:0!important}
+.theme-win98 .progress{background:#fff!important;border:1px inset #dfdfdf!important;height:8px!important}.theme-win98 .progress i{background:#000080!important}
+.theme-win98 .browserbar,.theme-win98 .mailrow,.theme-win98 .todo-line,.theme-win98 .sticky{background:#dfdfdf!important;border-color:#808080!important}
+
+/* GREEN TERMINAL */
+.desktop.theme-terminalgreen{
+  --a:#65ff78;--surface:#071108;--surface2:#0c1d0e;--text:#8aff94;
+  --muted:#58b862;--line:#42b951;--bar1:#0d2410;--bar2:#071408;
+  --task1:#081a0b;--task2:#041006;--bubble:#071408;--bubbleMe:#102b14;
+  --shadow:rgba(36,255,70,.18);--icon:#173d1c;
+  background:#030a04!important;
+  background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(80,255,100,.055) 3px 4px)!important;
+  color:#8aff94!important;
+  font-family:Consolas,"Courier New",monospace!important;
+}
+.theme-terminalgreen .window{background:rgba(3,15,5,.96)!important;border:1px solid #53dc64!important;box-shadow:0 0 18px #39ff5a25!important;backdrop-filter:none!important}
+.theme-terminalgreen .bar{background:#0d2410!important;color:#8aff94!important;border-bottom:1px solid #53dc64!important}
+.theme-terminalgreen .bar *,.theme-terminalgreen .content,.theme-terminalgreen .content *{color:#8aff94!important}
+.theme-terminalgreen .taskbar{background:#061508!important;border-top:1px solid #53dc64!important;color:#8aff94!important;backdrop-filter:none!important}
+.theme-terminalgreen .iconpic{background:#123817!important;border:1px solid #53dc64!important;box-shadow:0 0 8px #39ff5a33!important}
+.theme-terminalgreen .icon.file .iconpic{background:#061508!important;border-color:#53dc64!important}
+.theme-terminalgreen .icon.file .iconpic:after{background:#65ff78!important;box-shadow:0 7px 0 #65ff78,0 14px 0 #65ff78!important}
+.theme-terminalgreen .icon span{background:#071108e8!important;color:#8aff94!important;text-shadow:0 0 4px #42ff55!important}
+.theme-terminalgreen .bubble{background:#071408!important;border:1px solid #53dc64!important;color:#8aff94!important;border-radius:2px!important}
+.theme-terminalgreen .bubble.me{background:#102b14!important}
+.theme-terminalgreen .cover,.theme-terminalgreen .avatar{background:#071108!important;border:1px solid #53dc64!important;color:#65ff78!important;box-shadow:inset 0 0 16px #39ff5a18!important}
+.theme-terminalgreen .progress{background:#17351b!important}.theme-terminalgreen .progress i{background:#65ff78!important}
+.theme-terminalgreen .browserbar,.theme-terminalgreen .mailrow,.theme-terminalgreen .todo-line,.theme-terminalgreen .sticky{background:#08170a!important;border-color:#53dc64!important;color:#8aff94!important}
+
+/* These special themes own their typography too, unless user explicitly changes it afterwards. */
+.theme-win98 .window,.theme-win98 .window *,.theme-win98 .icon,.theme-win98 .taskbar{font-family:Tahoma,"MS Sans Serif",sans-serif!important}
+.theme-terminalgreen .window,.theme-terminalgreen .window *,.theme-terminalgreen .icon,.theme-terminalgreen .taskbar{font-family:Consolas,"Courier New",monospace!important}
+.theme-newspaper .window,.theme-newspaper .window *,.theme-newspaper .icon,.theme-newspaper .taskbar{font-family:Georgia,"Times New Roman",serif!important}
+
+/* Editable messenger participant names */
+.messenger-names{margin-bottom:8px}
+.messages{display:flex;flex-direction:column;gap:7px}
+.messages .bubble{align-self:flex-start}
+.messages .bubble.me{align-self:flex-end}
+
+
+/* =========================================================
+   XP / CLASSIC MAC / OFFICE BEIGE — FULL THEME REDESIGN
+   테마 선택 시 DEARLY 기본 핑크가 남지 않도록 최종 우선 적용
+   ========================================================= */
+
+/* ---------- WINDOWS XP ---------- */
+.desktop.theme-winxp{
+  --a:#245edb;
+  --surface:#ece9d8;
+  --surface2:#f5f3e8;
+  --text:#1f1f1f;
+  --muted:#5d5d5d;
+  --line:#245edb;
+  --bubble:#fff;
+  --bubbleMe:#dce9ff;
+  --icon:#f1cf45;
+  background:
+    radial-gradient(ellipse at 48% 82%, #63ad36 0 19%, transparent 19.4%),
+    radial-gradient(ellipse at 74% 86%, #78bf43 0 25%, transparent 25.5%),
+    linear-gradient(180deg,#4aa8ed 0%,#79c5f2 55%,#76bd43 55.2%,#4d9d2c 100%) !important;
+  color:#1f1f1f !important;
+  font-family:Tahoma,Arial,sans-serif !important;
+}
+.theme-winxp .window{
+  background:#ece9d8 !important;
+  border:3px solid #245edb !important;
+  border-radius:8px 8px 3px 3px !important;
+  box-shadow:2px 5px 13px rgba(0,0,0,.28) !important;
+  backdrop-filter:none !important;
+}
+.theme-winxp .bar{
+  min-height:26px !important;
+  background:linear-gradient(180deg,#63a5ff 0%,#1d5bd8 48%,#1648b4 100%) !important;
+  border:0 !important;
+  border-radius:4px 4px 0 0 !important;
+  color:#fff !important;
+  text-shadow:1px 1px #17429a;
+}
+.theme-winxp .bar *{color:#fff !important}
+.theme-winxp .bar .close{
+  background:linear-gradient(#ff8b70,#dc3d27) !important;
+  border:1px solid #fff !important;
+  color:#fff !important;
+  border-radius:4px !important;
+  box-shadow:inset 0 0 0 1px #bd2f1f !important;
+}
+.theme-winxp .content,
+.theme-winxp .content *{color:#1f1f1f !important}
+.theme-winxp .taskbar{
+  background:linear-gradient(180deg,#2f78e5,#1654bd) !important;
+  border-top:1px solid #4f9aff !important;
+  color:#fff !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.3) !important;
+}
+.theme-winxp .taskbar *{color:#fff !important}
+.theme-winxp .start{
+  width:auto !important;
+  min-width:64px !important;
+  padding:0 11px !important;
+  background:linear-gradient(180deg,#69bb54,#318b32) !important;
+  color:#fff !important;
+  border:0 !important;
+  border-radius:0 12px 12px 0 !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.45) !important;
+}
+.theme-winxp .start:after{content:" start";font-weight:bold;font-style:italic;color:#fff}
+.theme-winxp .iconpic{
+  background:linear-gradient(180deg,#ffe873,#e7bd22) !important;
+  border:1px solid #9d7b00 !important;
+  border-radius:2px !important;
+  box-shadow:none !important;
+}
+.theme-winxp .icon.file .iconpic{
+  background:linear-gradient(135deg,#fff 0 74%,#d9e7ff 75%) !important;
+  border:1px solid #7f9db9 !important;
+}
+.theme-winxp .icon.file .iconpic:after{
+  background:#245edb !important;
+  box-shadow:0 7px 0 #245edb,0 14px 0 #245edb !important;
+}
+.theme-winxp .icon > span{
+  background:rgba(36,94,219,.82) !important;
+  color:#fff !important;
+  text-shadow:1px 1px 2px #1b376c !important;
+  border-radius:1px !important;
+}
+.theme-winxp .bubble{
+  background:#fff !important;
+  border:1px solid #7f9db9 !important;
+  color:#1f1f1f !important;
+}
+.theme-winxp .bubble.me{background:#dce9ff !important}
+.theme-winxp .browserbar,
+.theme-winxp .mailrow,
+.theme-winxp .todo-line,
+.theme-winxp .sticky{
+  background:#f8f7ef !important;
+  border-color:#7f9db9 !important;
+}
+.theme-winxp .cover,.theme-winxp .avatar{
+  background:linear-gradient(135deg,#83b7ff,#eaf3ff) !important;
+  border:1px solid #7f9db9 !important;
+}
+.theme-winxp .progress{background:#fff !important;border:1px solid #7f9db9 !important}
+.theme-winxp .progress i{background:#2d8c35 !important}
+
+/* ---------- CLASSIC MAC ---------- */
+.desktop.theme-classicmac{
+  --a:#111;
+  --surface:#fff;
+  --surface2:#e8e8e8;
+  --text:#111;
+  --muted:#555;
+  --line:#111;
+  --bubble:#fff;
+  --bubbleMe:#dedede;
+  --icon:#fff;
+  background:#bdbdbd !important;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.055) 0 1px,transparent 1px 3px) !important;
+  color:#111 !important;
+  font-family:Geneva,Chicago,"Helvetica Neue",Arial,sans-serif !important;
+}
+.theme-classicmac .window{
+  background:#fff !important;
+  border:2px solid #111 !important;
+  border-radius:0 !important;
+  box-shadow:4px 4px 0 rgba(0,0,0,.38) !important;
+  backdrop-filter:none !important;
+}
+.theme-classicmac .bar{
+  min-height:25px !important;
+  color:#111 !important;
+  border:0 !important;
+  border-bottom:2px solid #111 !important;
+  border-radius:0 !important;
+  background:
+    repeating-linear-gradient(0deg,#111 0 1px,#fff 1px 3px) !important;
+}
+.theme-classicmac .bar .title{
+  background:#fff !important;
+  color:#111 !important;
+  padding:2px 9px !important;
+  margin:auto !important;
+  font-weight:bold !important;
+}
+.theme-classicmac .bar .dot{display:none !important}
+.theme-classicmac .bar .close{
+  width:18px !important;height:18px !important;
+  background:#fff !important;
+  color:#111 !important;
+  border:2px solid #111 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+.theme-classicmac .content,
+.theme-classicmac .content *{color:#111 !important}
+.theme-classicmac .taskbar{
+  background:#fff !important;
+  color:#111 !important;
+  border-top:2px solid #111 !important;
+  box-shadow:none !important;
+}
+.theme-classicmac .taskbar *{color:#111 !important}
+.theme-classicmac .start{
+  background:#fff !important;
+  border:2px solid #111 !important;
+  color:#111 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+.theme-classicmac .iconpic{
+  background:#fff !important;
+  border:2px solid #111 !important;
+  border-radius:0 !important;
+  box-shadow:2px 2px 0 #777 !important;
+}
+.theme-classicmac .icon.file .iconpic{background:#fff !important}
+.theme-classicmac .icon.file .iconpic:after{
+  background:#111 !important;
+  box-shadow:0 7px 0 #111,0 14px 0 #111 !important;
+}
+.theme-classicmac .icon > span{
+  background:#fff !important;
+  color:#111 !important;
+  text-shadow:none !important;
+  border-radius:0 !important;
+}
+.theme-classicmac .bubble{
+  background:#fff !important;
+  color:#111 !important;
+  border:1px solid #111 !important;
+  border-radius:0 !important;
+  box-shadow:1px 1px 0 #999 !important;
+}
+.theme-classicmac .bubble.me{background:#dedede !important}
+.theme-classicmac .browserbar,
+.theme-classicmac .mailrow,
+.theme-classicmac .todo-line,
+.theme-classicmac .sticky{
+  background:#fff !important;
+  border:1px solid #111 !important;
+}
+.theme-classicmac .cover,.theme-classicmac .avatar{
+  background:linear-gradient(135deg,#222,#eee) !important;
+  filter:grayscale(1) !important;
+  border:2px solid #111 !important;
+  border-radius:0 !important;
+}
+.theme-classicmac .progress{background:#fff !important;border:1px solid #111 !important}
+.theme-classicmac .progress i{background:#111 !important}
+
+/* ---------- OFFICE BEIGE ---------- */
+.desktop.theme-office{
+  --a:#78634b;
+  --surface:#eee8dc;
+  --surface2:#ddd3c1;
+  --text:#302a23;
+  --muted:#746858;
+  --line:#8c7d68;
+  --bubble:#f8f3e9;
+  --bubbleMe:#d9ccb6;
+  --icon:#a78d68;
+  background:
+    linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08)),
+    repeating-linear-gradient(90deg,#c8bda8 0 1px,#cfc5b2 1px 5px) !important;
+  color:#302a23 !important;
+  font-family:Arial,"Noto Sans KR",sans-serif !important;
+}
+.theme-office .window{
+  background:#eee8dc !important;
+  border:1px solid #786c5c !important;
+  border-radius:3px !important;
+  box-shadow:4px 6px 14px rgba(62,49,34,.27) !important;
+  backdrop-filter:none !important;
+}
+.theme-office .bar{
+  min-height:26px !important;
+  background:linear-gradient(180deg,#e2d8c8,#c6b79f) !important;
+  color:#302a23 !important;
+  border-bottom:1px solid #786c5c !important;
+  border-radius:2px 2px 0 0 !important;
+}
+.theme-office .bar *{color:#302a23 !important}
+.theme-office .bar .dot{background:#8f795b !important}
+.theme-office .bar .close{
+  background:#d8cdbb !important;
+  color:#443b31 !important;
+  border:1px solid #8b7c68 !important;
+  border-radius:2px !important;
+}
+.theme-office .content,
+.theme-office .content *{color:#302a23 !important}
+.theme-office .taskbar{
+  background:linear-gradient(180deg,#e4dac9,#c9bca7) !important;
+  color:#302a23 !important;
+  border-top:1px solid #786c5c !important;
+  box-shadow:none !important;
+}
+.theme-office .taskbar *{color:#302a23 !important}
+.theme-office .start{
+  background:#9a8567 !important;
+  color:#fff !important;
+  border:1px solid #6e5e4a !important;
+  border-radius:3px !important;
+}
+.theme-office .iconpic{
+  background:linear-gradient(#bca27d,#927652) !important;
+  border:1px solid #6e5941 !important;
+  border-radius:2px !important;
+  box-shadow:1px 2px 2px rgba(60,45,28,.25) !important;
+}
+.theme-office .icon.file .iconpic{
+  background:#f4efe5 !important;
+  border:1px solid #8c7d68 !important;
+}
+.theme-office .icon.file .iconpic:after{
+  background:#78634b !important;
+  box-shadow:0 7px 0 #78634b,0 14px 0 #78634b !important;
+}
+.theme-office .icon > span{
+  background:#f4efe5dd !important;
+  color:#302a23 !important;
+  text-shadow:none !important;
+  border-radius:2px !important;
+}
+.theme-office .bubble{
+  background:#f8f3e9 !important;
+  color:#302a23 !important;
+  border:1px solid #9d8e78 !important;
+  border-radius:3px !important;
+}
+.theme-office .bubble.me{background:#d9ccb6 !important}
+.theme-office .browserbar,
+.theme-office .mailrow,
+.theme-office .todo-line,
+.theme-office .sticky{
+  background:#e3dacb !important;
+  border-color:#9a8a74 !important;
+}
+.theme-office .cover,.theme-office .avatar{
+  background:linear-gradient(135deg,#826e55,#d9cbb6) !important;
+  border:1px solid #8c7d68 !important;
+}
+.theme-office .progress{background:#d8cebd !important;border:1px solid #9a8a74 !important}
+.theme-office .progress i{background:#78634b !important}
+
+/* special themes should not inherit the original pink title/taskbar accents */
+.theme-winxp .window,
+.theme-classicmac .window,
+.theme-office .window{
+  --pink:#0000;
+}
+
+
+/* Custom wallpaper must override every theme texture/pattern. */
+.desktop.has-wallpaper{background-image:var(--custom-wallpaper) !important;background-repeat:no-repeat !important;background-position:center !important;}
